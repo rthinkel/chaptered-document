@@ -1,11 +1,11 @@
 {{ if .IsHome }}
-    {{ range sort site.RegularPages "Params.order" }}
-        <h2><a href="{{ .RelPermalink }}">Chapter {{ .Params.order }} — {{ .LinkTitle }}</a></h2>
+    {{ range sort site.RegularPages "Params.weight" }}
+        <h2><a href="{{ .RelPermalink }}">Chapter {{ .Params.weight }} — {{ .LinkTitle }}</a></h2>
         {{ .Summary | truncate 500 }}
     {{ end }}
 {{ else }}
-    {{ range sort .Pages "Params.order" }}
-        <h2><a href="{{ .RelPermalink }}">Chapter {{ .Params.order }} — {{ .LinkTitle }}</a></h2>
+    {{ range sort .Pages "Params.weight" }}
+        <h2><a href="{{ .RelPermalink }}">Chapter {{ .Params.weight }} — {{ .LinkTitle }}</a></h2>
         {{ .Summary | truncate 750 }}
     {{ end }}
 {{ end }}

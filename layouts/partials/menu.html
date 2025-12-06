@@ -14,7 +14,6 @@ Renders a menu for the given menu ID.
   <nav>
     <ul>
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-      
     </ul>
   </nav>
 {{- end }}
@@ -34,7 +33,7 @@ Renders a menu for the given menu ID.
         {{- $name = . }}
       {{- end }}
     {{- end }}
-    <li>
+    <li style="list-style-type: none;">
       <a
         {{- range $k, $v := $attrs }}
           {{- with $v }}

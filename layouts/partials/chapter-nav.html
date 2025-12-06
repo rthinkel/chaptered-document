@@ -1,0 +1,11 @@
+{{if eq .Section "chapter"}}
+  <ul>
+  {{ with .NextInSection }}
+    <li style="list-style-type: none;"><a href="{{ .Permalink }}">Next Chapter</a> - {{ .Title }}</li>
+  {{ end }}
+
+  {{ with .PrevInSection }}
+    <li style="list-style-type: none;"><a href="{{ .Permalink }}">Previous Chapter</a> - {{ .Title }}</li>
+  {{ end }}
+  </ul>
+{{ end }}

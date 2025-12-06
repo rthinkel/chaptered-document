@@ -1,18 +1,8 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  <h2>{{ .Title }}</h2>
 
   {{ .Content }}
 
-{{if eq .Section "chapter"}}
-  <ul>
-  {{ with .NextInSection }}
-    <li><a href="{{ .Permalink }}">Next Chapter</a> - {{ .Title }}</li>
-  {{ end }}
-
-  {{ with .PrevInSection }}
-    <li><a href="{{ .Permalink }}">Previous Chapter</a> - {{ .Title }}</li>
-  {{ end }}
-  </ul>
-{{ end }}
+  {{ partial "chapter-nav.html" . }}
 
 {{ end }}

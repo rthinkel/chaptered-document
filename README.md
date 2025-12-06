@@ -8,8 +8,10 @@ A basic HUGO theme for documents, presented as chapters. This is a basic modific
 
 ## Installation
 
+```
 cd themes
 git submodule add https://github.com/rthinkel/chaptered-document.git
+```
 
 ## Configuration
 

@@ -1,11 +1,27 @@
-{{if eq .Section "chapter"}}
+{{ if eq .Section "chapter" }}
+  {{ $sorted := sort .CurrentSection.Pages "Params.weight" }}
+  
+  {{ $index := -1 }}
+  {{ range $i, $p := $sorted }}
+    {{ if eq $p.RelPermalink $.RelPermalink }}
+      {{ $index = $i }}
+    {{ end }}
+  {{ end }}
+  
+  {{ $prev := index $sorted (add $index -1) }}
+  {{ $next := index $sorted (add $index 1) }}
+  
   <ul>
-  {{ with .NextInSection }}
-    <li style="list-style-type: none;"><a href="{{ .Permalink }}">Next Chapter</a> - {{ .Title }}</li>
-  {{ end }}
+    {{ if ge (add $index -1) 0 }}
+      <li style="list-style-type: none;">
+        <a href="{{ $prev.Permalink }}">Previous Chapter</a> - {{ $prev.Title }}
+      </li>
+    {{ end }}
 
-  {{ with .PrevInSection }}
-    <li style="list-style-type: none;"><a href="{{ .Permalink }}">Previous Chapter</a> - {{ .Title }}</li>
-  {{ end }}
+    {{ if lt (add $index 1) (len $sorted) }}
+      <li style="list-style-type: none;">
+        <a href="{{ $next.Permalink }}">Next Chapter</a> - {{ $next.Title }}
+      </li>
+    {{ end }}
   </ul>
 {{ end }}
